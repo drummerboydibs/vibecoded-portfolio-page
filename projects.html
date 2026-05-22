@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dylan Smith's projects — game development, web apps, and ongoing learning.">
+    <title>Projects — Dylan Smith</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="site-name">Dylan Smith</a>
+            <nav>
+                <a href="resume.html">Resume</a>
+                <a href="projects.html">Projects</a>
+                <a href="music.html">Music</a>
+                <a href="https://github.com/drummerboydibs" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/adylansmith/" target="_blank" rel="noopener">LinkedIn</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="page-header">
+            <p class="section-label">// things I've built</p>
+            <h1>Projects</h1>
+        </div>
+
+        <div class="projects-content">
+
+            <!-- Each project is an <article> — self-contained, meaningful on its own.
+                 Notice the border-top accent matches the card-grid cards on the home page.
+                 Reusing the same visual motif creates visual consistency. -->
+
+            <article class="project-card">
+                <h2><a href="https://drummerboydibs.itch.io/ancient-sssnakes" target="_blank" rel="noopener">Ancient Sssnakes</a></h2>
+                <div class="project-meta">
+                    <span class="project-tag">Unity</span>
+                    <span class="project-tag">C#</span>
+                    <span class="project-tag">Game Dev</span>
+                </div>
+                <p>3D adventure game built for the University of Michigan-Flint 2023 Game Jam — Silver Medalist. Designed and built in just over two weeks: WASD movement, NPC dialogue, an AI-navigated enemy system, and a boss fight. Temple ruins, mummies, and Indiana Jones energy.</p>
+                <div class="project-links">
+                    <a href="https://drummerboydibs.itch.io/ancient-sssnakes" target="_blank" rel="noopener">Play on Itch.io →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <h2>Loanlist</h2>
+                <div class="project-meta">
+                    <span class="project-tag">HTML / CSS / JS</span>
+                    <span class="project-tag">Supabase</span>
+                    <span class="project-tag">PostgreSQL</span>
+                    <span class="project-tag">Web App</span>
+                </div>
+                <p>Full-stack loan tracker — keep tabs on items you've lent out, with due dates, categories, and return tracking. Uses Supabase for auth and a PostgreSQL database with Row Level Security so each user's data is completely isolated. CSS is organized using BEM and design tokens.</p>
+                <div class="project-links">
+                    <a href="https://github.com/drummerboydibs" target="_blank" rel="noopener">View on GitHub →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <h2><a href="https://github.com/drummerboydibs" target="_blank" rel="noopener">This Portfolio</a></h2>
+                <div class="project-meta">
+                    <span class="project-tag">HTML</span>
+                    <span class="project-tag">CSS</span>
+                    <span class="project-tag">Static Site</span>
+                </div>
+                <p>Built from scratch — no frameworks, no Bootstrap, no templates. Pure HTML and CSS with a custom design token system. The goal was to understand every line rather than rely on generated code.</p>
+                <div class="project-links">
+                    <a href="https://github.com/drummerboydibs" target="_blank" rel="noopener">GitHub Profile →</a>
+                </div>
+            </article>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Built from scratch by Dylan Smith &middot; 2026</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

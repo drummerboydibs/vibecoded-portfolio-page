@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- viewport meta tag: required for responsive design.
+         Without it, mobile browsers zoom out and show the desktop layout. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- description: shown in Google search results under your page title -->
+    <meta name="description" content="Dylan Smith — Solution Architect, Product Manager, and Drummer based in Michigan.">
+    <title>Dylan Smith</title>
+
+    <!-- Preconnect hints tell the browser to open a connection to Google Fonts
+         early, before it even starts parsing the CSS that requests the fonts.
+         This shaves ~100-200ms off font load time on first visit. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- <header> is a semantic landmark — screen readers and browser "reader mode"
+         recognize it as the page header, not just a styled div. -->
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="site-name">Dylan Smith</a>
+            <nav>
+                <a href="resume.html">Resume</a>
+                <a href="projects.html">Projects</a>
+                <a href="music.html">Music</a>
+                <a href="https://github.com/drummerboydibs" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/adylansmith/" target="_blank" rel="noopener">LinkedIn</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- <main> marks the primary content of the page.
+         A page should have exactly one <main>. -->
+    <main>
+
+        <!-- Hero: the first thing visitors see -->
+        <section class="hero">
+            <p class="section-label">// solution architect · product manager · drummer</p>
+            <h1>Andrew "Dylan" Smith</h1>
+            <p class="hero-tagline">Connecting people and software<br>to help people do good and do better.</p>
+            <p class="hero-sub">Always in learning mode.</p>
+        </section>
+
+        <!-- Navigation cards: the three main sections of the site -->
+        <div class="card-grid">
+
+            <!-- <article> = self-contained content. Could make sense on its own,
+                 outside the context of this page. Good fit for a card. -->
+            <article class="card">
+                <h2><a href="resume.html">Resume</a></h2>
+                <p>Work history, education, and skills — 13+ years spanning music education, technical support, and product management.</p>
+            </article>
+
+            <article class="card">
+                <h2><a href="projects.html">Projects</a></h2>
+                <p>Game dev, web apps, and what I'm building — from a Game Jam Silver Medal to a full-stack Supabase loan tracker.</p>
+            </article>
+
+            <article class="card">
+                <h2><a href="music.html">Music</a></h2>
+                <p>Releases and recordings — drumming with Thundergrater and session work.</p>
+            </article>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Built from scratch by Dylan Smith &middot; 2026</p>
+    </footer>
+
+    <!-- Script tag at bottom of body: the HTML above is fully parsed before
+         this runs, so querySelectorAll() can find the nav links. -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,539 @@
+/* ============================================================
+   DESIGN TOKENS
+   All colors, fonts, and spacing live here.
+   Change a value once — it updates everywhere that uses var().
+   ============================================================ */
+:root {
+    /* Colors */
+    --color-bg:      #0d1117;   /* near-black page background */
+    --color-surface: #161b22;   /* card / section backgrounds */
+    --color-navy:    #2c3560;   /* header (existing brand color) */
+    --color-orange:  #f89009;   /* primary accent (existing brand) */
+    --color-text:    #e6edf3;   /* main body text */
+    --color-muted:   #8b949e;   /* secondary / supporting text */
+    --color-border:  #21262d;   /* subtle dividers and card edges */
+
+    /* Typography */
+    --font-heading: 'Courier Prime', 'Courier New', monospace;
+    --font-body:    'JetBrains Mono', 'Courier New', monospace;
+
+    /* Spacing scale — consistent rhythm across the page */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+
+    /* Maximum content width — centers things on wide screens */
+    --max-width: 960px;
+}
+
+/* ============================================================
+   RESET & BASE
+   Normalize browser defaults before we add our own styles.
+   ============================================================ */
+
+/* box-sizing: border-box means padding and border count INSIDE
+   the element's width, not added on top of it. */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Default link color is our orange accent.
+   text-decoration: none removes the underline (we add it back on hover selectively). */
+a {
+    color: var(--color-orange);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* All headings use the Courier Prime monospace font */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* ============================================================
+   HEADER & NAV
+   ============================================================ */
+header {
+    background-color: var(--color-navy);
+    border-bottom: 3px solid var(--color-orange);
+    /* sticky: header stays at top of viewport while you scroll */
+    position: sticky;
+    top: 0;
+    z-index: 100; /* stays above all page content */
+}
+
+.header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.site-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.site-name:hover {
+    color: var(--color-orange);
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap; /* links wrap to a second line on narrow screens */
+}
+
+nav a {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    /* transition smooths the color change on hover (0.15s = fast but visible) */
+    transition: color 0.15s;
+}
+
+nav a:hover {
+    color: var(--color-orange);
+    text-decoration: none;
+}
+
+/* Added by main.js at runtime — marks the current page in the nav */
+nav a.nav-active {
+    color: var(--color-orange);
+    border-bottom: 2px solid var(--color-orange);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-md);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* ============================================================
+   REUSABLE: SECTION LABEL
+   The small all-caps label above headings (e.g. "// work history").
+   ============================================================ */
+.section-label {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-body);
+}
+
+/* ============================================================
+   REUSABLE: PAGE HEADER
+   The title block at the top of inner pages (resume, projects, music).
+   ============================================================ */
+.page-header {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-lg);
+}
+
+.page-header h1 {
+    /* clamp(min, preferred, max): responsive type without media queries.
+       Browser picks a value between 1.5rem and 2.5rem based on viewport width. */
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* ============================================================
+   HOME: HERO
+   ============================================================ */
+.hero {
+    padding: var(--space-xl) var(--space-md);
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-sm);
+}
+
+.hero-tagline {
+    font-size: 1.1rem;
+    color: var(--color-muted);
+    margin-bottom: var(--space-xs);
+}
+
+.hero-sub {
+    font-size: 0.9rem;
+    color: var(--color-orange);
+}
+
+/* ============================================================
+   HOME: CARD GRID
+   Three navigation cards on the home page.
+   ============================================================ */
+.card-grid {
+    max-width: var(--max-width);
+    margin: 0 auto var(--space-xl);
+    padding: 0 var(--space-md);
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;               /* all cards share available width equally */
+    min-width: 220px;      /* below this width, cards stack instead of shrinking */
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-orange); /* the signature orange accent */
+    padding: var(--space-md);
+    transition: border-color 0.15s;
+}
+
+.card:hover {
+    border-left-color: var(--color-text);
+}
+
+.card h2 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+}
+
+.card h2 a {
+    color: var(--color-text);
+}
+
+.card h2 a:hover {
+    color: var(--color-orange);
+    text-decoration: none;
+}
+
+.card p {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   RESUME PAGE
+   ============================================================ */
+.resume-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md) var(--space-xl);
+}
+
+.resume-section {
+    margin-bottom: var(--space-xl);
+}
+
+.resume-section > h2 {
+    font-size: 1.1rem;
+    color: var(--color-orange);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.job {
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-sm);
+    border-left: 2px solid var(--color-border);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xs);
+}
+
+.job-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+.job-company {
+    color: var(--color-orange);
+}
+
+/* <time> is a semantic HTML element for dates — good for accessibility
+   and search engines. We style it the same as muted text. */
+.job-dates {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    white-space: nowrap;
+}
+
+.job ul {
+    list-style: none; /* remove default bullet points */
+    padding: 0;
+    margin-top: var(--space-xs);
+}
+
+.job ul li {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    padding-left: 1.4em;
+    position: relative; /* required so the ::before arrow can be placed absolutely */
+    margin-bottom: 0.4rem;
+    line-height: 1.55;
+}
+
+/* ::before is a pseudo-element — it inserts content before each <li>
+   without adding extra HTML. Here it creates our → arrow bullet. */
+.job ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-orange);
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.skill-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+.skill-group h3 {
+    font-size: 0.8rem;
+    color: var(--color-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-xs);
+}
+
+.skill-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-group ul li {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    padding: 0.2rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* ============================================================
+   PROJECTS PAGE
+   ============================================================ */
+.projects-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md) var(--space-xl);
+}
+
+.project-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-orange);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.project-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-xs);
+}
+
+.project-card h2 a {
+    color: var(--color-text);
+}
+
+.project-card h2 a:hover {
+    color: var(--color-orange);
+    text-decoration: none;
+}
+
+.project-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-sm);
+}
+
+.project-tag {
+    background-color: var(--color-border);
+    color: var(--color-muted);
+    padding: 0.15em 0.65em;
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+}
+
+.project-card p {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+.project-links {
+    margin-top: var(--space-sm);
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.project-links a {
+    font-size: 0.82rem;
+}
+
+/* ============================================================
+   MUSIC PAGE
+   ============================================================ */
+.music-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md) var(--space-xl);
+}
+
+.music-intro {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin-bottom: var(--space-lg);
+}
+
+.music-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.music-card {
+    flex: 1;
+    min-width: 220px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-orange);
+    padding: var(--space-md);
+}
+
+.music-card h2 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.music-card h2 a {
+    color: var(--color-text);
+}
+
+.music-card h2 a:hover {
+    color: var(--color-orange);
+    text-decoration: none;
+}
+
+.music-credit {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    margin-bottom: var(--space-sm);
+}
+
+.streaming-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+/* Primary streaming button — filled orange */
+.streaming-btn {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--color-bg);
+    background-color: var(--color-orange);
+    padding: 0.35em 0.9em;
+    display: inline-block;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.streaming-btn:hover {
+    background-color: var(--color-text);
+    text-decoration: none;
+}
+
+/* Secondary streaming button — outlined */
+.streaming-btn.secondary {
+    background-color: transparent;
+    color: var(--color-orange);
+    border: 1px solid var(--color-orange);
+}
+
+.streaming-btn.secondary:hover {
+    background-color: var(--color-orange);
+    color: var(--color-bg);
+    text-decoration: none;
+}
+
+/* ============================================================
+   RESPONSIVE
+   Media queries override rules when the viewport is narrow.
+   We put these at the bottom so they win the specificity battle.
+   ============================================================ */
+@media (max-width: 600px) {
+    /* Stack header vertically on mobile */
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-xs);
+    }
+
+    /* Tighten nav link spacing */
+    nav {
+        gap: var(--space-sm);
+    }
+
+    /* Job header: date drops below title on narrow screens */
+    .job-header {
+        flex-direction: column;
+    }
+
+    /* Reduce outer padding on small screens */
+    .hero,
+    .card-grid,
+    .resume-content,
+    .projects-content,
+    .music-content,
+    .page-header {
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+    }
+}
